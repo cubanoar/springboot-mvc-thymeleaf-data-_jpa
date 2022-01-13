@@ -20,7 +20,7 @@ INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(18, 'Oasd',
 INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(19, 'Pasd', 'Aguilar', 'pepe@gmail.com', '2017-08-28');
 INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(20, 'Jbnm', 'Wick', 'john@gmail.com', '2017-08-28');
 INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(21, 'Pert', 'Aguilar', 'pepe@gmail.com', '2017-08-28');
-INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(22, 'Iasd', 'Wick', 'john@gmail.com', '2017-08-28');INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(1, 'Pepe', 'Aguilar', 'pepe@gmail.com', '2017-08-28');
-INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(23, 'Erg', 'Wick', 'john@gmail.com', '2017-08-28');INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(1, 'Pepe', 'Aguilar', 'pepe@gmail.com', '2017-08-28');
-INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(24, 'Yweb', 'Wick', 'john@gmail.com', '2017-08-28');INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(1, 'Pepe', 'Aguilar', 'pepe@gmail.com', '2017-08-28');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(22, 'Iasd', 'Wick', 'john@gmail.com', '2017-08-28');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(23, 'Erg', 'Wick', 'john@gmail.com', '2017-08-28');
+INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(24, 'Yweb', 'Wick', 'john@gmail.com', '2017-08-28');
 INSERT INTO clientes (id, nombre, apellido, email, create_at) VALUES(25, 'Uweb', 'Wick', 'john@gmail.com', '2017-08-28');
