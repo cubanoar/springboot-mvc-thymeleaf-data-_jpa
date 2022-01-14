@@ -42,7 +42,12 @@ public class Cliente implements Serializable {
 	@Temporal(TemporalType.DATE) // indicar el formato con que se va a guardar la fecha en la base de datos
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
+	
+	private String foto;
+	
+	
 	private static final long serialVersionUID = 1L;
+	
 
 	/*
 	 * @PrePersistpara que se llame antes del metodo persist( antes de insertar el
@@ -94,4 +99,13 @@ public class Cliente implements Serializable {
 		return serialVersionUID;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	
 }
