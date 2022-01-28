@@ -1,13 +1,18 @@
 package com.cubanoar.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 //import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,12 +50,20 @@ public class Cliente implements Serializable {
 	
 	private String foto;
 	
+	/*relacion en ambos sentidos por eso el mappedBy="atributo de la otra clase de la relacion" y crea cliente_id en 
+	 * la tabla facturas*/
+	@OneToMany(mappedBy = "cliente" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Factura> facturas;
+	
+	public Cliente() {
+		facturas = new ArrayList<Factura>();
+	}
 	
 	private static final long serialVersionUID = 1L;
 	
 
 	/*
-	 * @PrePersistpara que se llame antes del metodo persist( antes de insertar el
+	 * @PrePersist para que se llame antes del metodo persist( antes de insertar el
 	 * registro en la base de datos) public void prePersist() { createAt = new
 	 * Date(); }
 	 */
@@ -107,5 +120,15 @@ public class Cliente implements Serializable {
 		this.foto = foto;
 	}
 
-	
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public void addFactura(Factura factura) {
+		facturas.add(factura);
+	}
 }
