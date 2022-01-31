@@ -24,10 +24,20 @@
 							</div>
 
 							<div class="form-floating mb-3">
-								<input class="form-control" placeholder="Descripción"
-									th:field="*{descripcion}"> <label
-									th:text="'Descripción'"></label>
+								<input name="descripcion" class="form-control" placeholder="Descripción"
+									th:field="*{descripcion}" th:errorclass="'form-control is-invalid'" />
+								<div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>	 
+								<label th:text="'Descripción'"></label>	
 							</div>
+							
+							<!-- <div class="form-group row">
+								<label for="descripcion" class="col-sm-2 col-form-label"
+									th:text="'Descripcion'"></label>
+								<div class="col-sm-6">
+									<input type="text" name="descripcion" class="form-control" th:field="*{descripcion}" th:errorclass="'form-control is-invalid'" />
+									<div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>	 
+								</div>
+							</div> -->
 
 							<div class="form-floating mb-3">
 								<textarea th:field="*{observacion}" class="form-control"
@@ -59,7 +69,7 @@
 								</thead>
 								<tbody></tbody>
 							</table>
-							<h5>$ <span  id="gran_total">0</span></h5>
+							<h5>Total: $<span class="badge bg-info text-dark" id="gran_total">0</span></h5>
 							<div class="form-group">
 								<br>
 								<div class="col-sm-6">
