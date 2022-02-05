@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head"></head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
@@ -42,7 +42,8 @@
 								<th scope="col">descripcion</th>
 								<th scope="col">fecha</th>
 								<th scope="col">total</th>
-								<th scope="col">ver</th>
+								<th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">ver</th>
+								<th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">eliminar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,12 +52,16 @@
 								<td th:text="${factura.descripcion}"></td>
 								<td th:text="${factura.createAt}"></td>
 								<td th:text="${factura.getTotal()}"></td>
-								<td><a class="btn btn-primary btn-xs" th:href="@{'/factura/ver/' + ${factura.id}}" th:text="'detalle'"></a></td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a class="btn btn-primary btn-xs" th:href="@{'/factura/ver/' + ${factura.id}}" th:text="'detalle'"></a></td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a class="btn btn-danger btn-xs" 
+									   th:href="@{'/factura/eliminar/' + ${factura.id}}" 
+									   th:text="'eliminar'"
+									   onclick="return confirm('¿Estas seguro?');"></a></td>
 
 							</tr>
 						</tbody>
 					</table>
-					<span><a class="btn btn-success btn-xs"
+					<span sec:authorize="hasRole('ROLE_ADMIN')" ><a class="btn btn-success btn-xs"
 						th:href="@{/factura/form/} + ${cliente.id}"
 						th:text="'Crear Factura'"></a></span>
 				</div>

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import com.cubanoar.springboot.app.models.entity.ItemFactura;
 import com.cubanoar.springboot.app.models.entity.Producto;
 import com.cubanoar.springboot.app.models.service.IClienteService;
 
+@Secured("ROLE_ADMIN")//se va aplicar en todos los metodos
 @Controller
 @RequestMapping("/factura")
 @SessionAttributes("factura")
@@ -35,7 +37,7 @@ public class FacturaController {
 	
 	@GetMapping("/ver/{id}")
 	public String ver(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
-		Factura factura = clienteService.findfacturaById(id);
+		Factura factura = clienteService.fetchFacturaByIdWithCienteWithItemFacturaWithProducto(id);
 		
 		if (factura == null) {
 			flash.addAttribute("error", "La factura no existe,");
@@ -109,7 +111,17 @@ public class FacturaController {
 	}
 	
 	
-	
+	@GetMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable Long id, RedirectAttributes flash) {
+		Factura factura = clienteService.findfacturaById(id);
+		if (factura != null) {
+			clienteService.deleteFactura(id);
+			flash.addFlashAttribute("success", "Factura eliminada con éxito");
+			return "redirect:/ver/" + factura.getCliente().getId();
+		}
+		flash.addFlashAttribute("error", "No existe la factura");
+		return "redirect:/listar";
+	}
 	
 	
 	
