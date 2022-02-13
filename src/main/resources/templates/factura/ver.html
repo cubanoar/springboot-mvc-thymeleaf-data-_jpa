@@ -12,7 +12,13 @@
 			</div>
 
 			<div class="card bg-light col-11">
-				<div class="card-header" th:text="${titulo}"></div>
+				<div class=row>
+					<div class="card-header col-11" th:text="${titulo}"></div>
+					
+						<a class="btn  btn-danger btn-xs col-1"
+							th:href="@{'/factura/ver/' + ${factura.id}(format=pdf)}" target="_blank">PDF</a>
+					
+				</div>
 				<div class="card-body">
 					<ul class="list-group my-4">
 						<li class="list-group-item list-group-item-primary"
@@ -57,10 +63,13 @@
 					<div class="card border-info mb-4" style="max-width: 20rem;">
 						<div class="card-header">Observaciones</div>
 						<div class="card-card-body">
-						<p class="card-text px-2 my-2" th:text="${factura.observacion}" th:if="${not #strings.isEmpty(factura.observacion)}"></p>
-						<p class="fst-italic px-2 my-2" th:if="${#strings.isEmpty(factura.observacion)}" th:text="'No tiene observaciones'"></p>
+							<p class="card-text px-2 my-2" th:text="${factura.observacion}"
+								th:if="${not #strings.isEmpty(factura.observacion)}"></p>
+							<p class="fst-italic px-2 my-2"
+								th:if="${#strings.isEmpty(factura.observacion)}"
+								th:text="'No tiene observaciones'"></p>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
