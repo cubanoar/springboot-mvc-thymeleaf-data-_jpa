@@ -6,19 +6,15 @@
 
 	<div class="container py-4">
 		<div class=row>
-			<div class="col">
+			<div class="col-1">
 				<a class="btn  btn-secondary btn-xs"
 					th:href="@{'/ver/' + ${factura.cliente.id}}" th:text="'Volver'"></a>
 			</div>
 
-			<div class="card bg-light col-11">
-				<div class=row>
-					<div class="card-header col-11" th:text="${titulo}"></div>
-					
-						<a class="btn  btn-danger btn-xs col-1"
-							th:href="@{'/factura/ver/' + ${factura.id}(format=pdf)}" target="_blank">PDF</a>
-					
-				</div>
+			<div class="card bg-light col-10">
+				
+				<div class="card-header" th:text="${titulo}"></div>
+				
 				<div class="card-body">
 					<ul class="list-group my-4">
 						<li class="list-group-item list-group-item-primary"
@@ -72,6 +68,11 @@
 
 					</div>
 				</div>
+			</div>
+			<div class="col-1">
+				<a class="btn  btn-danger"
+					th:href="@{'/factura/ver/' + ${factura.id}(format=pdf)}"
+					target="_blank">PDF</a>
 			</div>
 		</div>
 	</div>
