@@ -73,7 +73,21 @@
 			<artifactId>openpdf</artifactId>
 			<version>1.3.26</version>
 		</dependency>
-		
+		<!-- Para Exportar XML, las versiones las maneja spring de forma automatica -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

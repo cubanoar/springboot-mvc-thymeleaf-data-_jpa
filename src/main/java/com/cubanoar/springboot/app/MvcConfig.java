@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -45,6 +46,14 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
+	}
+	//Para exportar xml
+	@Bean
+	public Jaxb2Marshaller jaxb2Marshaller() {
+		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+		//Pasamos las clases que vamos a exportar en el arreglo
+		marshaller.setClassesToBeBound(new Class[] {com.cubanoar.springboot.app.view.xml.ClienteList.class});
+		return marshaller;
 	}
 	
 	
