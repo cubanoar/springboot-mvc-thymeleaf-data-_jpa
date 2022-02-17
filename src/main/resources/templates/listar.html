@@ -11,11 +11,13 @@
 		<div class="card bg-light">
 			<div class="card-header">
 				<div class="row">
-					<div class="col-11">
+					<div class="col-9">
 						<h3 class="text-primary" th:text="${titulo}"></h3>
 					</div>
-					<a class="col-1 btn btn-outline-success"
+					<a class="col-1 btn btn-outline-success me-1"
 						th:href="@{'/listar'(format=xml)}">XML</a>
+					<a class="col-1 btn btn-outline-warning"
+						th:href="@{'/listar'(format=json)}">JSON</a>
 				</div>
 			</div>
 			<div class="card-body table-responsive">

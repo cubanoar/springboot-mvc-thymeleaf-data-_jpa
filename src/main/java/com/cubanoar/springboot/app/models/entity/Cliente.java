@@ -23,6 +23,9 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity // clase POJO
 @Table(name = "clientes") // cambiando el nombre de la tabla
 //es recomendable siempre implementar Serializable
@@ -46,6 +49,7 @@ public class Cliente implements Serializable {
 	@Column(name = "create_at") // podemos cambiar varios atributos
 	@Temporal(TemporalType.DATE) // indicar el formato con que se va a guardar la fecha en la base de datos
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createAt;
 	
 	private String foto;
@@ -53,6 +57,7 @@ public class Cliente implements Serializable {
 	/*relacion en ambos sentidos por eso el mappedBy="atributo de la otra clase de la relacion" y crea cliente_id en 
 	 * la tabla facturas*/
 	@OneToMany(mappedBy = "cliente" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
 	private List<Factura> facturas;
 	
 	public Cliente() {
