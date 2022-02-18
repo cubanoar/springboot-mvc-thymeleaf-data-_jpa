@@ -3,6 +3,7 @@ package com.cubanoar.springboot.app.controllers;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -83,6 +85,12 @@ public class ClienteController {
 		model.addAttribute("titulo", "Cliente: " + cliente.getNombre() + " " + cliente.getApellido());
 		
 		return "ver";
+	}
+	
+	/*Metodo que va a responder en formato json*/
+	@GetMapping("/listar-rest")
+	public @ResponseBody List<Cliente> listarRest(){
+		return clienteService.findAll();
 	}
 	
 	@GetMapping({"/listar","/"})
